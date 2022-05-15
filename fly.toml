@@ -1,0 +1,22 @@
+app = "bookmarkslol"
+
+[build]
+image = "sissbruecker/linkding:1.9.0"
+
+[mounts]
+source = "bookmarkslol_data"
+destination = "/etc/linkding/data"
+
+[[services]]
+internal_port = "9090"
+protocol = "tcp"
+
+[[services.ports]]
+handlers = ["http"]
+port = "80"
+force_https = true
+
+[[services.ports]]
+handlers = ["tls", "http"]
+port = "443"
+
